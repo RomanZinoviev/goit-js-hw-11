@@ -1,8 +1,12 @@
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import './sass/main.scss';
-import axios from "axios";
+import './css/styles.css';
 import Notiflix from 'notiflix';
-import SimpleLightbox from "simplelightbox";
+import axios from "axios";
+import SimpleLightbox from 'simplelightbox';
 
-const BASE_API = "https://pixabay.com/api/";
-const API_KEY = "25728701-c83c0487db4f1d7b899af3be5";
+const BASE_URL = "https://pixabay.com/api/";
+const URL_KEY = "25728701-c83c0487db4f1d7b899af3be5";
+
+
+
+

@@ -12,8 +12,10 @@ export default class NewApiService {
     const saerchParameters = "image_type=photo&orientation=horizontal&safesearch=true&per_page=40";
     try {
         const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.searchQwery}&${saerchParameters}&page=${this.page}`);
-        const images = response.data.hits;
-       return images;
+        const images = response.data;
+        this.incrementPage();
+        console.log(response)
+         return images;
         } catch (error) { console.log(error) };
     }
     

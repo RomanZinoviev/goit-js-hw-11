@@ -13,8 +13,7 @@ export default class NewApiService {
     try {
         const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.searchQwery}&${saerchParameters}&page=${this.page}`);
         const images = response.data;
-        this.incrementPage();
-        console.log(response)
+        this.incrementPage();        
          return images;
         } catch (error) { console.log(error) };
     }

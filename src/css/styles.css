@@ -15,6 +15,13 @@ body {
 a {
   text-decoration: none;
   color: black;
+  display: flex;
+  flex-basis: 30%;
+  /* border: 1px solid black; */
+  margin-right: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), -23px 0 20px -23px rgba(0, 0, 0, 0.8),
+    23px 0 20px -23px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 #search-form {
@@ -24,24 +31,56 @@ a {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  background-color: blue;
-}
-
-.photo-card {
-  width: 300px;
-  height: 250px;
-  margin-bottom: 30px;
-  margin-right: 30px;
+  background: repeating-linear-gradient(
+      190deg,
+      rgba(255, 0, 0, 0.5) 40px,
+      rgba(255, 153, 0, 0.5) 80px,
+      rgba(255, 255, 0, 0.5) 120px,
+      rgba(0, 255, 0, 0.5) 160px,
+      rgba(0, 0, 255, 0.5) 200px,
+      rgba(75, 0, 130, 0.5) 240px,
+      rgba(238, 130, 238, 0.5) 280px,
+      rgba(255, 0, 0, 0.5) 300px
+    ),
+    repeating-linear-gradient(
+      -190deg,
+      rgba(255, 0, 0, 0.5) 30px,
+      rgba(255, 153, 0, 0.5) 60px,
+      rgba(255, 255, 0, 0.5) 90px,
+      rgba(0, 255, 0, 0.5) 120px,
+      rgba(0, 0, 255, 0.5) 150px,
+      rgba(75, 0, 130, 0.5) 180px,
+      rgba(238, 130, 238, 0.5) 210px,
+      rgba(255, 0, 0, 0.5) 230px
+    ),
+    repeating-linear-gradient(
+      23deg,
+      red 50px,
+      orange 100px,
+      yellow 150px,
+      green 200px,
+      blue 250px,
+      indigo 300px,
+      violet 350px,
+      red 370px
+    );
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
   margin-right: 20px;
+  padding: 0 95px;
 }
 
 .info {
   display: flex;
+}
+
+.load-more {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .is-hidden {

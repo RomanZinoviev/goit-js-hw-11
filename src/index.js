@@ -9,17 +9,23 @@ const searchFormEl = document.querySelector("#search-form");
 const loadMoreButton = document.querySelector(".load-more");
 const galleryEl = document.querySelector(".gallery");
 var lightbox = new SimpleLightbox('.gallery a');
+const allCardsEl = galleryEl.getElementsByTagName("a");
 
 const searchImagesHandle = (event) => {
     event.preventDefault();
     galleryEl.innerHTML = "";
     newApiService.query = event.currentTarget.searchQuery.value;
     newApiService.resetPage();
-    newApiService.fetchImages().then((images) => {
-        if (images.hits.length === 0) { return Notiflix.Notify.info("Sorry, there are no images matching your search query. Please try again."); }
-        addImageMarkup(images.hits);
+  newApiService.fetchImages().then((images) => {
+    if (newApiService.query === "") { loadMoreButton.classList.add("is-hidden"); return };    
+    if (images.hits.length === 0) {
+      loadMoreButton.classList.add("is-hidden");
+      return Notiflix.Notify.info("Sorry, there are no images matching your search query. Please try again.");
+    }
+    addImageMarkup(images.hits);
+    Notiflix.Notify.success(`Hooray! We found ${images.totalHits} images.`);
         loadMoreButton.classList.remove("is-hidden");   
-        lightbox.refresh()
+      lightbox.refresh()      
     })
 };
 
@@ -54,10 +60,11 @@ const addImageMarkup = (images) => {
 const doMoreImageHandle = () => {
     loadMoreButton.classList.add("is-hidden");
     newApiService.fetchImages().then(images => {
-        addImageMarkup(images.hits);
+        addImageMarkup(images.hits);         
+      lightbox.refresh();
+      if (images.totalHits !== allCardsEl.length) {
         loadMoreButton.classList.remove("is-hidden");
-        Notiflix.Notify.success(`Hooray! We found ${images.totalHits} images.`);
-        lightbox.refresh()
+      }else{Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");}
     });
     
 }
